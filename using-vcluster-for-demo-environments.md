@@ -33,19 +33,19 @@ One of CloudBees' main value adds for their enterpirse Jenkins product was (and 
 Eventually CloudBees updated their enterprise Jenkins product to run on Kubernetes (after going with Mesos initially, but who knew :). The new support for running on Kubernetes allowed us to start using Kubernetes for demo environm.              ents, semi-ephemeral workshop environments and trial sandbox environments; with each install being its own Google Cloud Platform GKE cluster. In some ways it was certainly an improvement over using Docker containers on EC2 instances or other VMs. But it was far from perfect for multiple reasons to include:
 - Time: Spinning up these environmens was definitely not instant. And although GKE clusters typically spin up much faster than AWS EKS or Azure AKS clusters, it typically still takes more than 10 minutes and sometimes more than 20 minutes to create a new GKE cluster, and that is before even installig the apps to be demoed.
 - Money: these environments ran for long periods of time, and although CloudBees' does have a cool feature that 'hiberantes' individual controllers, the Operations Center did not hibernate. So, having a GKE cluster for multiple environments for each use case (demos, workshops, trial sandboxes) is fairly expensive.
-- Security: 
-
-Kubernetes `Namespaces` were used to for multi-tenancy, to include workshop environments where we gave access to multiple prospects.
+- Security: Kubernetes `Namespaces` were used to for multi-tenancy, to include workshop environments where we gave access to multiple prospects.
 
 Talk about Operations Center and managed controllers in the context of multi-tenancy for the presales team and workshop attendees. Use and limitations of namespaces.
 
 ## 8 Years Later and Kubernetes Has Become a Thing
 
-Enter one of the most exciting Kubernetes projects in the last few year: vCluster. If you don't already know, vClusters are virtual Kubernetes clusters that run in a `Namspace` on a host cluster.
+Enter one of the most exciting Kubernetes projects in the last few year: vCluster. If you don't already know, vClusters are virtual Kubernetes clusters that run in a `Namespace` on a host cluster. They spin up in seconds versus 10+ minutes - so much faster than the GKE clusters I was using at CloudBees. 
 
 ## Demo Environments at Loft Labs
 
-At Loft Labs the Loft platform is used to manage Loft demo environment. That is, we are installing our own product into a vCluster that is running on top of our product - or more correctly, a vCluster being managed by our product. So, although our vCluster demo setup has a certain "Inception-ish" feel to it - our setup actually illustrates just how awesomely like-real Kubernetes vClusters are ... but better, especially for Kubernetes based demo environments.
+At Loft Labs we use the vCluster Platform to create and manage demo environments. That is, we are installing our own product into a vCluster that is running on top of our product - or more correctly, a vCluster being managed by our product. So, although our vCluster demo setup has a certain "Inception-ish" feel to it - our setup actually illustrates just how awesomely like-real Kubernetes vClusters are ... but better, especially for Kubernetes based demo environments.
+
+Sleep mode and auto-delet makes it easier to manage unused demo environments.
 
 vCluster templates
 Loft/vCluster.Pro Apps

@@ -10,7 +10,7 @@ tags:
   - enterprise
   - use-cases
   - demos
-metaTitle: vClusters for Kubernetes Demo Environments
+metaTitle: Using vClusters for Kubernetes Demo Environments
 metaDescription: "vClusters for Kubernetes Demo Environments: ."
 comments: true
 ---
@@ -38,6 +38,8 @@ Eventually CloudBees updated their enterprise Jenkins product to run on Kubernet
 Talk about Operations Center and managed controllers in the context of multi-tenancy for the presales team and workshop attendees. Use and limitations of namespaces.
 
 ## 8 Years Later and Kubernetes Has Become a Thing
+
+So, running CloudBees CI demo environments on Kubernetes made it easier to manage, but it still had its drawbacks. 
 
 Enter one of the most exciting Kubernetes projects in the last few year: vCluster. If you don't already know, vClusters are virtual Kubernetes clusters that run in a `Namespace` on a host cluster. They spin up in seconds versus 10+ minutes - so much faster than the GKE clusters I was using at CloudBees. 
 

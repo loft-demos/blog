@@ -28,10 +28,6 @@ Furthermore, the architecture of CloudBees' enterprise Jenkins product did not l
 
 One of CloudBees' main value adds for their enterpirse Jenkins product was (and still is) something they called Operations Center which is basically a special instance of Jenkins that allows you to easily manage multiple instances of Jenkins. Think of it as a Jenkins controller for Jenkins instances.
 
-### My Brief Foray with Docker Swarm
-
-Using Docke Swarm
-
 ## Enter Kubernetes
 
 Eventually CloudBees updated their enterprise Jenkins product to run on Kubernetes (after going with Mesos initially, but who knew :). The new support for running on Kubernetes allowed us to start using Kubernetes for demo environm.              ents, semi-ephemeral workshop environments and trial sandbox environments; with each install being its own Google Cloud Platform GKE cluster. In some ways it was certainly an improvement over using Docker containers on EC2 instances or other VMs. But it was far from perfect for multiple reasons to include:

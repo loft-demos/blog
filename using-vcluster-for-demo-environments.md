@@ -35,9 +35,9 @@ Using Docke Swarm
 ## Enter Kubernetes
 
 Eventually CloudBees updated their enterprise Jenkins product to run on Kubernetes (after going with Mesos initially, but who knew :). The new support for running on Kubernetes allowed us to start using Kubernetes for demo environm.              ents, semi-ephemeral workshop environments and trial sandbox environments; with each install being its own Google Cloud Platform GKE cluster. In some ways it was certainly an improvement over using Docker containers on EC2 instances or other VMs. But it was far from perfect for multiple reasons to include:
-- Time: Spinning up these environmens was definitely not instant. And although GKE clusters typially spin up much faster than AWS EKS or Azure AKS clusters, it still takes more than 10 minutes and sometimes more than 20 minutes to create a new GKE cluster, and that is before even installig the apps.
+- Time: Spinning up these environmens was definitely not instant. And although GKE clusters typically spin up much faster than AWS EKS or Azure AKS clusters, it typically still takes more than 10 minutes and sometimes more than 20 minutes to create a new GKE cluster, and that is before even installig the apps to be demoed.
 - Money: these environments ran for long periods of time, and although CloudBees' does have a cool feature that 'hiberantes' individual controllers, the Operations Center did not hibernate. So, having a GKE cluster for multiple environments for each use case (demos, workshops, trial sandboxes) is fairly expensive.
-- 
+- Security: 
 
 Kubernetes `Namespaces` were used to for multi-tenancy, to include workshop environments where we gave access to multiple prospects.
 

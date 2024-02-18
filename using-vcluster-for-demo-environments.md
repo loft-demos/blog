@@ -14,29 +14,36 @@ metaTitle: vClusters for Kubernetes Demo Environments
 metaDescription: "vClusters for Kubernetes Demo Environments: ."
 comments: true
 ---
-If you are demoing Kubernetes based applications and not using vCluster, virtual Kubernetes clusters, then you are doing it wrong. That's it. The end of this article...
+If you are demoing Kubernetes based applications and not using [vCluster](https://www.vcluster.com/docs/what-are-virtual-clusters), that is virtual Kubernetes clusters, then you are doing it wrong. That's it. The end of this article...
 
-Okay, just kidding, there is a bit more to this article than that.
+Okay, just kidding, there is a bit more to this article than that and actually too much for one article.
 
-This article explores a bit of my history with pre-sales demo environments and will then explore the benefits of using vClusters to quickly spin up shareable, ephemeral demo environments for Kubernetes based applications.
+This series of articles will explore a bit of my history with pre-sales demo environments and will then explore the benefits of using vClusters to quickly spin up shareable, ephemeral demo environments for Kubernetes based applications.
 
 ## Demo Environments the 'Old Way'
 
-Back in 2015 I was just starting in a pre-sales engineering role at CloudBees. Docker containers were all the rage (Kubernetes was already a thing, but I hadn't heard of it yet). I was tasked with creating easily shared, and *somewhat* ephemeral demo environments for CloudBees' enterprise Jenkins product. So, Docker containers seemed like the obvious approach to take versus a more *traditional* VM based install. And guess where we ran Docker for the demo environment containers - on VMs, or to be more precise on EC2 instances. Managing everything was not trivial work, it was time consuming and fairly manual. But running containers with Docker did make it easier. And it allowed using tools like Docker Compose to coordinate a multi-container install.
+Back in 2015 I was just starting in a pre-sales engineering role at CloudBees. Docker containers were all the rage (Kubernetes was already a thing, but I hadn't heard of it yet). I was tasked with creating easily shareable, and *mostly* ephemeral demo environments for CloudBees' enterprise Jenkins product. So, Docker containers seemed like the obvious approach to take versus a more *traditional* VM based install. And guess where we ran Docker for the demo environment containers - on VMs, or to be more precise on EC2 instances. Managing everything was not trivial, it was time consuming and very manual. But running containers with Docker did make it easier. And it allowed using tools like Docker Compose to coordinate a multi-container install.
 
 Furthermore, the architecture of CloudBees' enterprise Jenkins product did not lend itself to running on one VM. Talk about Operations Center and managed controllers in Docker containers.
 
-### Brief Foray with Docker Swarm
+One of CloudBees' main value adds for their enterpirse Jenkins product was (and still is) something they called Operations Center which is basically a special instance of Jenkins that allows you to easily manage multiple instances of Jenkins. Think of it as a Jenkins controller for Jenkins instances.
+
+### My Brief Foray with Docker Swarm
 
 Using Docke Swarm
 
 ## Enter Kubernetes
 
-Eventually CloudBees updated their enterprise Jenkins product to run on Kubernetes (after going with Mesos initially, but who knew :). So, with the added support for running on Kubernetes, we began using Kubernetes for demo environments, ephemeral workshop environments and trial environments; each being its own GKE cluster. In some ways it was certainly an improvement over using Docker containers on EC2 instances or other VMs. But it wasn't perfect. Kubernetes `Namespaces` were used to for multi-tenancy, to include workshop environments where we gave access to multiple prospects.
+Eventually CloudBees updated their enterprise Jenkins product to run on Kubernetes (after going with Mesos initially, but who knew :). The new support for running on Kubernetes allowed us to start using Kubernetes for demo environm.              ents, semi-ephemeral workshop environments and trial sandbox environments; with each install being its own Google Cloud Platform GKE cluster. In some ways it was certainly an improvement over using Docker containers on EC2 instances or other VMs. But it was far from perfect for multiple reasons to include:
+- Time: Spinning up these environmens was definitely not instant. And although GKE clusters typially spin up much faster than AWS EKS or Azure AKS clusters, it still takes more than 10 minutes and sometimes more than 20 minutes to create a new GKE cluster, and that is before even installig the apps.
+- Money: these environments ran for long periods of time, and although CloudBees' does have a cool feature that 'hiberantes' individual controllers, the Operations Center did not hibernate. So, having a GKE cluster for multiple environments for each use case (demos, workshops, trial sandboxes) is fairly expensive.
+- 
+
+Kubernetes `Namespaces` were used to for multi-tenancy, to include workshop environments where we gave access to multiple prospects.
 
 Talk about Operations Center and managed controllers in the context of multi-tenancy for the presales team and workshop attendees. Use and limitations of namespaces.
 
-## 8 Years Later and Kubernetes has Become a Thing
+## 8 Years Later and Kubernetes Has Become a Thing
 
 Enter one of the most exciting Kubernetes projects in the last few year: vCluster. If you don't already know, vClusters are virtual Kubernetes clusters that run in a `Namspace` on a host cluster.
 

@@ -49,6 +49,6 @@ At Loft Labs we use the vCluster Platform to create and manage demo environments
 
 Sleep mode and auto-delet makes it easier to manage unused demo environments.
 
-vCluster templates
+vCluster templates allows us to manage the demo vClusters at scale. 
 Loft/vCluster.Pro Apps
 Additional support Apps/integrations
